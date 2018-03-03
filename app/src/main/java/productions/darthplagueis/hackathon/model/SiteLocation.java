@@ -3,13 +3,13 @@ package productions.darthplagueis.hackathon.model;
 public class SiteLocation {
 
     private String type;
-    private int[] coordinates;
+    private float[] coordinates;
 
     public String getType() {
         return type;
     }
 
-    public int[] getCoordinates() {
+    public float[] getCoordinates() {
         return coordinates;
     }
 }

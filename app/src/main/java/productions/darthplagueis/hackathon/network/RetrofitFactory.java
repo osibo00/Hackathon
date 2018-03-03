@@ -5,7 +5,6 @@ import android.util.Log;
 import java.util.List;
 
 import productions.darthplagueis.hackathon.abstractclasses.AbstractRetrofitFactory;
-import productions.darthplagueis.hackathon.model.DropOffSites;
 import productions.darthplagueis.hackathon.model.FoodScrapsResponse;
 import productions.darthplagueis.hackathon.util.Host;
 import retrofit2.Call;
@@ -35,20 +34,20 @@ public class RetrofitFactory extends AbstractRetrofitFactory {
 
     public void getDropOffSiteLocations() {
         NycOpenDataService service = buildRetrofit().create(NycOpenDataService.class);
-        Call<FoodScrapsResponse> responseCall = service.getFoodScrapsDropOffSites();
-        responseCall.enqueue(new Callback<FoodScrapsResponse>() {
+        Call<List<FoodScrapsResponse>> responseCall = service.getFoodScrapsDropOffSites();
+        responseCall.enqueue(new Callback<List<FoodScrapsResponse>>() {
             @Override
-            public void onResponse(Call<FoodScrapsResponse> call, Response<FoodScrapsResponse> response) {
+            public void onResponse(Call<List<FoodScrapsResponse>> call, Response<List<FoodScrapsResponse>> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "onResponse: " + response.isSuccessful());
-                    List<DropOffSites> responseList = response.body().getSitesList();
+                    List<FoodScrapsResponse> responseList = response.body();
                     foodScrapsListener.dropOffSiteCallBack(responseList);
                     Log.d(TAG, "onResponse: listSize=" + responseList.size());
                 }
             }
 
             @Override
-            public void onFailure(Call<FoodScrapsResponse> call, Throwable t) {
+            public void onFailure(Call<List<FoodScrapsResponse>> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
                 foodScrapsListener.onErrorCallBack(t);
             }
@@ -62,7 +61,7 @@ public class RetrofitFactory extends AbstractRetrofitFactory {
     }
 
     public interface FoodScrapsListener {
-        void dropOffSiteCallBack(List<DropOffSites> responseList);
+        void dropOffSiteCallBack(List<FoodScrapsResponse> responseList);
 
         void onErrorCallBack(Throwable t);
     }
