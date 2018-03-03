@@ -13,13 +13,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,7 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import productions.darthplagueis.hackathon.abstractclasses.AbstractActivity;
 import productions.darthplagueis.hackathon.controller.FragmentAdapter;
-import productions.darthplagueis.hackathon.fragments.DropSiteLocationsFragment;
+import productions.darthplagueis.hackathon.fragments.DropSiteLocationsActivityFragment;
 
 import static productions.darthplagueis.hackathon.util.Constants.ANONYMOUS;
 import static productions.darthplagueis.hackathon.util.Constants.RC_LOCATION;
@@ -128,9 +126,8 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
 
     private void setViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DropSiteLocationsFragment(), "hey");
-        adapter.addFragment(new DropSiteLocationsFragment(), "hi");
-        adapter.addFragment(new DropSiteLocationsFragment(), "ho");
+        adapter.addActivityFragment(new DropSiteLocationsActivityFragment(), getString(R.string.drop_off_sites));
+        //adapter.addActivityFragment(new DropSiteLocationsActivityFragment(), "hi");
         viewPager.setAdapter(adapter);
     }
 

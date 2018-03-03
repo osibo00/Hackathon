@@ -6,5 +6,8 @@
     <string name="play_services_error">Google Play Services error.</string>
     <string name="auth_failed">Authentication failed.</string>
     <string name="no_network">No Network Connectivity.</string>
+    <string name="network_error">Network error.</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="drop_off_sites">Drop Off Sites</string>
+    <string name="tap_for_more_details">Tap for more details</string>
 </resources>

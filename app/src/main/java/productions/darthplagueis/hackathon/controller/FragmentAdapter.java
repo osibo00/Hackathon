@@ -8,11 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import productions.darthplagueis.hackathon.abstractclasses.AbstractFragment;
+import productions.darthplagueis.hackathon.abstractclasses.AbstractActivityFragment;
+import productions.darthplagueis.hackathon.abstractclasses.AbstractOnBoardingFragment;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
 
-    private final List<AbstractFragment> fragmentList = new ArrayList<>();
+    private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentTitleList = new ArrayList<>();
 
     public FragmentAdapter(FragmentManager manager) {
@@ -28,9 +29,13 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-    public void addFragment(AbstractFragment abstractFragment, String title) {
-        fragmentList.add(abstractFragment);
+    public void addActivityFragment(AbstractActivityFragment abstractActivityFragment, String title) {
+        fragmentList.add(abstractActivityFragment);
         fragmentTitleList.add(title);
+    }
+
+    public void addOnBoardingFragments(AbstractOnBoardingFragment abstractOnBoardingFragment) {
+        fragmentList.add(abstractOnBoardingFragment);
     }
 
     @Nullable

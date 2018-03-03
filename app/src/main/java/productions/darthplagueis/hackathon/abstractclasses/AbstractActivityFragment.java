@@ -9,16 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class AbstractFragment extends Fragment {
-
+public abstract class AbstractActivityFragment extends Fragment {
 
     private AbstractActivity parentActivity;
     public View parentView;
 
-    public AbstractFragment() {
+    public AbstractActivityFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onAttach(Context context) {
