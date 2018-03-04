@@ -1,6 +1,8 @@
 package productions.darthplagueis.hackathon.model;
 
-public class FoodScrapsResponse {
+import java.io.Serializable;
+
+public class FoodScrapsResponse implements Serializable {
 
     private String borough;
     private String census_tract;

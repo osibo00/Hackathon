@@ -135,7 +135,7 @@
         <item name="green_600" type="color">#0a8f08</item>
         <item name="light_green_600" type="color">#7cb342</item>
         <item name="lime_600" type="color">#c0ca33</item>
-        <item name="yellow_600" type="color">#fdd835</item>
+        <!-- <item name="yellow_600" type="color">#fdd835</item> -->
         <item name="orange_600" type="color">#fb8c00</item>
         <item name="deep_orange_600" type="color">#f4511e</item>
         <item name="brown_600" type="color">#6d4c41</item>

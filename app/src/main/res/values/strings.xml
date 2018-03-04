@@ -7,7 +7,17 @@
     <string name="auth_failed">Authentication failed.</string>
     <string name="no_network">No Network Connectivity.</string>
     <string name="network_error">Network error.</string>
-    <string name="sign_in_with_google">Sign in with Google</string>
-    <string name="drop_off_sites">Drop Off Sites</string>
+    <string name="sign_in_with_google">Sign in with Google…</string>
+    <string name="drop_off_sites">FoodScrap Drop Off Sites</string>
     <string name="tap_for_more_details">Tap for more details</string>
+    <string name="what_is_food_scraps_food_waste">What is food scraps/food waste?</string>
+    <string name="what_answer"><![CDATA[It\'s fruit and vegetable scraps, non-greasy food scraps (rice, pasta, bread, cereal etc.), coffee grounds & filters, tea bags, egg and nut shells, pits, cut or dried flowers, houseplants and potting soil.]]></string>
+    <string name="why_recycle">Why recycle food waste to compost?</string>
+    <string name="why_answer">Food comprises about 17% of NYC\'s waste stream. When this material is sent to a landfill it contributes to NYCs disposal costs and can create greenhouse gas emissions. When composted, food scraps and other organic waste become a useful product that adds nutrients and improves the quality of soil for street trees, gardens and more.</string>
+    <string name="why_recycle_cont">Why recycle food waste at all?</string>
+    <string name="why_answer_cont">New York City has shown incredible leadership on food waste recycling to first prevent, then recover, and finally recycle any remaining food with implement government policy and laws along with dedicated and simple organic waste recycling practices.</string>
+    <string name="hours_unavailable">Hours are unavailable.</string>
+    <string name="days_unavailable">Days are unavailable.</string>
+    <string name="results_returned">Food scrap drop off sites returned.</string>
+    <string name="skip">Skip</string>
 </resources>

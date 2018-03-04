@@ -3,6 +3,8 @@ package productions.darthplagueis.hackathon.fragments;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import productions.darthplagueis.hackathon.network.RetrofitFactory;
 
 public class DropSiteLocationsActivityFragment extends AbstractActivityFragment {
 
+    private ProgressBar progressBar;
     private RecyclerView recyclerView;
 
     @Override
@@ -28,6 +31,8 @@ public class DropSiteLocationsActivityFragment extends AbstractActivityFragment 
     }
 
     private void setViews() {
+        progressBar = (ProgressBar) parentView.findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
         recyclerView = (RecyclerView) parentView.findViewById(R.id.recycler_view);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL));
@@ -41,10 +46,14 @@ public class DropSiteLocationsActivityFragment extends AbstractActivityFragment 
             @Override
             public void dropOffSiteCallBack(List<FoodScrapsResponse> responseList) {
                 recyclerView.setAdapter(new DropOffSiteAdapter(responseList));
+                progressBar.setVisibility(View.GONE);
+                getParentActivity().showSnackbar(String.valueOf(responseList.size()) + " " +
+                        getString(R.string.results_returned));
             }
 
             @Override
             public void onErrorCallBack(Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 getParentActivity().showSnackbar(getParentActivity().getString(R.string.network_error));
             }
         };

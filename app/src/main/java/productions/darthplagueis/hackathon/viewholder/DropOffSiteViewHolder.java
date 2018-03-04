@@ -1,5 +1,6 @@
 package productions.darthplagueis.hackathon.viewholder;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
@@ -7,8 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import productions.darthplagueis.hackathon.DetailActivity;
 import productions.darthplagueis.hackathon.R;
 import productions.darthplagueis.hackathon.model.FoodScrapsResponse;
+
+import static productions.darthplagueis.hackathon.util.Constants.CARD_COLOR;
+import static productions.darthplagueis.hackathon.util.Constants.FOOD_SCRAPS_RESPONSE;
 
 public class DropOffSiteViewHolder extends RecyclerView.ViewHolder {
 
@@ -20,21 +25,30 @@ public class DropOffSiteViewHolder extends RecyclerView.ViewHolder {
         cardView = (CardView) itemView.findViewById(R.id.card_view);
         nameText = (TextView) itemView.findViewById(R.id.location_name);
         addressText = (TextView) itemView.findViewById(R.id.location_address);
-        hoursText = (TextView) itemView.findViewById(R.id.location_hours);
         daysText = (TextView) itemView.findViewById(R.id.location_days);
+        hoursText = (TextView) itemView.findViewById(R.id.location_hours);
         boroughText = (TextView) itemView.findViewById(R.id.location_borough);
     }
 
-    public void onBind(FoodScrapsResponse foodScrapsResponse) {
-        cardView.setCardBackgroundColor(getMatColor("500"));
-        nameText.setText(foodScrapsResponse.getLocation());
-        addressText.setText(foodScrapsResponse.getLocation_1_address());
-        hoursText.setText(foodScrapsResponse.getHours());
-        daysText.setText(foodScrapsResponse.getDays());
-        boroughText.setText(foodScrapsResponse.getBorough());
+    public void onBind(FoodScrapsResponse response) {
+        cardView.setCardBackgroundColor(getMaterialDesignColor("600"));
+        setOnClick(response);
+        nameText.setText(response.getLocation());
+        addressText.setText(response.getLocation_1_address());
+        if (response.getDays() == null) {
+            daysText.setText(R.string.days_unavailable);
+        } else {
+            daysText.setText(response.getDays());
+        }
+        if (response.getHours() == null) {
+            hoursText.setText(R.string.hours_unavailable);
+        } else {
+            hoursText.setText(response.getHours());
+        }
+        boroughText.setText(response.getBorough());
     }
 
-    private int getMatColor(String typeColor) {
+    private int getMaterialDesignColor(String typeColor) {
         int returnColor = Color.BLACK;
         int arrayId = itemView.getResources().getIdentifier("mdcolor_" + typeColor,
                 "array", itemView.getContext().getPackageName());
@@ -45,5 +59,17 @@ public class DropOffSiteViewHolder extends RecyclerView.ViewHolder {
             colors.recycle();
         }
         return returnColor;
+    }
+
+    private void setOnClick(final FoodScrapsResponse response) {
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detailActivityIntent = new Intent(itemView.getContext(), DetailActivity.class);
+                detailActivityIntent.putExtra(CARD_COLOR, cardView.getCardBackgroundColor());
+                detailActivityIntent.putExtra(FOOD_SCRAPS_RESPONSE, response);
+                itemView.getContext().startActivity(detailActivityIntent);
+            }
+        });
     }
 }

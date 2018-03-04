@@ -21,9 +21,9 @@ public class DropOffSiteAdapter extends RecyclerView.Adapter<DropOffSiteViewHold
 
     @Override
     public DropOffSiteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View childView = LayoutInflater.from(parent.getContext())
+        View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.dropoff_site_item_view, parent, false);
-        return new DropOffSiteViewHolder(childView);
+        return new DropOffSiteViewHolder(itemView);
     }
 
     @Override
