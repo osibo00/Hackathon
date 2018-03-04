@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/activity_padding">
 
         <TextView
             android:id="@+id/location_name"
@@ -51,23 +51,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/location_hours"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                tools:text="@string/app_name"
-                tools:textColor="@android:color/black" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
-
-            <TextView
                 android:id="@+id/location_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +68,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/location_borough"
+                android:id="@+id/location_hours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -105,11 +88,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/location_borough"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:text="@string/app_name"
+                tools:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/tap_for_more_details"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
@@ -118,6 +111,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 </android.support.v7.widget.CardView>

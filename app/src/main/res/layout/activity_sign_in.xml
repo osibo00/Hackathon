@@ -5,12 +5,31 @@
     android:id="@+id/coord_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_list"
     tools:context="productions.darthplagueis.hackathon.SignInActivity">
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <Button
+            android:id="@+id/skip_sign_in_btn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sign_in_button"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/activity_padding"
+            android:text="@string/skip"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

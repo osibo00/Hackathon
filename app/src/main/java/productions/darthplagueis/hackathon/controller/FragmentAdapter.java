@@ -19,6 +19,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public FragmentAdapter(FragmentManager manager) {
         super(manager);
     }
+
     @Override
     public Fragment getItem(int position) {
         return fragmentList.get(position);
@@ -36,6 +37,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     public void addOnBoardingFragments(AbstractOnBoardingFragment abstractOnBoardingFragment) {
         fragmentList.add(abstractOnBoardingFragment);
+        fragmentTitleList.add("");
     }
 
     @Nullable

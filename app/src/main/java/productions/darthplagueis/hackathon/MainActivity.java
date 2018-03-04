@@ -42,7 +42,6 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
     private GoogleApiClient googleApiClient;
     private FusedLocationProviderClient locationProviderClient;
 
-    private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
     private DrawerLayout drawerLayout;
@@ -107,7 +106,7 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
             username = firebaseUser.getDisplayName();
@@ -135,8 +134,12 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.sign_in_menu:
-                startActivity(new Intent(this, SignInActivity.class));
-                finish();
+                if (firebaseUser == null) {
+                    startActivity(new Intent(this, SignInActivity.class));
+                    finish();
+                } else {
+                    showSnackbar(String.format("Already logged in as %s.", username));
+                }
                 return true;
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);

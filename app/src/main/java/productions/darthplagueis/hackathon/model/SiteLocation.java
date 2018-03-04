@@ -1,6 +1,8 @@
 package productions.darthplagueis.hackathon.model;
 
-public class SiteLocation {
+import java.io.Serializable;
+
+public class SiteLocation implements Serializable {
 
     private String type;
     private float[] coordinates;

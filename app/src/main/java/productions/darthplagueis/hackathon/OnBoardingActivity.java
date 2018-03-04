@@ -1,6 +1,7 @@
 package productions.darthplagueis.hackathon;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import productions.darthplagueis.hackathon.abstractclasses.AbstractOnBoardingActivity;
@@ -20,6 +21,8 @@ public class OnBoardingActivity extends AbstractOnBoardingActivity {
     private void setViews() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setViewPager(viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(viewPager, true);
     }
 
     @Override
@@ -40,11 +43,11 @@ public class OnBoardingActivity extends AbstractOnBoardingActivity {
     private void setViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         DefaultOnBoardingFragment whatFragment = new DefaultOnBoardingFragment();
-        whatFragment.setLayoutId(R.layout.fragment_on_boarding);
+        whatFragment.setLayoutId(R.layout.fragment_on_boarding_intro);
         DefaultOnBoardingFragment whyFragment = new DefaultOnBoardingFragment();
-        whyFragment.setLayoutId(R.layout.fragment_on_boarding);
+        whyFragment.setLayoutId(R.layout.fragment_on_boarding_why);
         HowOnBoardingFragment howFragment = new HowOnBoardingFragment();
-        howFragment.setLayoutId(R.layout.fragment_on_boarding);
+        howFragment.setLayoutId(R.layout.fragment_on_boarding_how);
         adapter.addOnBoardingFragments(whatFragment);
         adapter.addOnBoardingFragments(whyFragment);
         adapter.addOnBoardingFragments(howFragment);

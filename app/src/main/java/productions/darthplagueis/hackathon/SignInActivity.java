@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -74,6 +75,14 @@ public class SignInActivity extends AbstractActivity implements
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+        Button skipSignInBtn = (Button) findViewById(R.id.skip_sign_in_btn);
+        skipSignInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                finish();
             }
         });
     }
