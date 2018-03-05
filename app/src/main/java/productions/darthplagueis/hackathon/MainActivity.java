@@ -2,6 +2,7 @@ package productions.darthplagueis.hackathon;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -22,12 +23,17 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.List;
 
 import productions.darthplagueis.hackathon.abstractclasses.AbstractActivity;
 import productions.darthplagueis.hackathon.controller.FragmentAdapter;
 import productions.darthplagueis.hackathon.fragments.DropSiteLocationsActivityFragment;
+import productions.darthplagueis.hackathon.fragments.MapsActivityFragment;
+import productions.darthplagueis.hackathon.model.FoodScrapsResponse;
 
 import static productions.darthplagueis.hackathon.util.Constants.ANONYMOUS;
 import static productions.darthplagueis.hackathon.util.Constants.RC_LOCATION;
@@ -45,6 +51,8 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
     private FirebaseUser firebaseUser;
 
     private DrawerLayout drawerLayout;
+
+    private MapsActivityFragment mapsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,14 +97,22 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
+        setNavDrawerListener(navigationView);
+    }
+
+    private void setNavDrawerListener(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
-
-                        // TODO: handle navigation
-
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_intro:
+                                startActivity(new Intent(MainActivity.this, OnBoardingActivity.class));
+                                break;
+                            default:
+                                break;
+                        }
                         drawerLayout.closeDrawers();
                         return true;
                     }
@@ -125,8 +141,9 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
 
     private void setViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
+        mapsFragment = new MapsActivityFragment();
         adapter.addActivityFragment(new DropSiteLocationsActivityFragment(), getString(R.string.drop_off_sites));
-        //adapter.addActivityFragment(new DropSiteLocationsActivityFragment(), "hi");
+        adapter.addActivityFragment(mapsFragment, getString(R.string.nearby_map));
         viewPager.setAdapter(adapter);
     }
 
@@ -178,8 +195,32 @@ public class MainActivity extends AbstractActivity implements GoogleApiClient.Co
         Log.d(TAG, "onRequestPermissionsResult: requestCode=" + requestCode);
         if (requestCode == RC_LOCATION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // do something
+                passLocationToFragment();
             }
+        }
+    }
+
+    public void passListToMapsFragment(List<FoodScrapsResponse> responseList) {
+        if (mapsFragment != null) {
+            mapsFragment.setMarkers(responseList);
+        }
+    }
+
+    private void passLocationToFragment() {
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationProviderClient.getLastLocation().addOnSuccessListener(this,
+                    new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                Log.d(TAG, "LastLocation: " + location);
+
+                            }
+                        }
+                    });
         }
     }
 }

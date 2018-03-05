@@ -5,10 +5,13 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -20,11 +23,11 @@ import productions.darthplagueis.hackathon.model.FoodScrapsResponse;
 
 import static productions.darthplagueis.hackathon.util.Constants.CARD_COLOR;
 import static productions.darthplagueis.hackathon.util.Constants.FOOD_SCRAPS_RESPONSE;
+import static productions.darthplagueis.hackathon.util.MaterialDesignColorGenerator.getMaterialDesignColor;
 
 public class DetailActivity extends AbstractActivity {
 
     private static final String TAG = "DetailActivity";
-    private int backgroundColor;
     private FoodScrapsResponse detailResponse;
 
     @Override
@@ -32,7 +35,6 @@ public class DetailActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         Intent extras = getIntent();
         if (extras != null) {
-            backgroundColor = extras.getIntExtra(CARD_COLOR, getResources().getColor(R.color.colorPrimary));
             detailResponse = (FoodScrapsResponse) extras.getSerializableExtra(FOOD_SCRAPS_RESPONSE);
         }
 
@@ -61,6 +63,8 @@ public class DetailActivity extends AbstractActivity {
         Glide.with(this)
                 .load(getResources().getDrawable(R.drawable.green_nature04))
                 .into(imageView);
+        CardView cardView = (CardView) findViewById(R.id.detail_bottom_row);
+        cardView.setCardBackgroundColor(getMaterialDesignColor(this, "600"));
         setTextViews();
     }
 
@@ -79,7 +83,7 @@ public class DetailActivity extends AbstractActivity {
         }
         TextView postcodeText = (TextView) findViewById(R.id.detail_postcode);
         if (detailResponse.getPostcode() == null) {
-            postcodeText.setText(R.string.postcode_unavailabe);
+            postcodeText.setVisibility(View.GONE);
         } else {
             postcodeText.setText(detailResponse.getPostcode());
         }
@@ -87,13 +91,13 @@ public class DetailActivity extends AbstractActivity {
         if (detailResponse.getDays() ==  null) {
             daysText.setText(R.string.days_unavailable);
         } else {
-            daysText.setText(detailResponse.getDays());
+            daysText.setText(String.format("Open: %s", detailResponse.getDays()));
         }
         TextView hoursText = (TextView) findViewById(R.id.detail_hours);
         if (detailResponse.getHours() == null) {
             hoursText.setText(R.string.hours_unavailable);
         } else {
-            hoursText.setText(detailResponse.getHours());
+            hoursText.setText(String.format("Hours: %s", detailResponse.getHours()));
         }
         TextView citymapText = (TextView) findViewById(R.id.detail_citymap);
         if (detailResponse.getCitymap_location() == null) {

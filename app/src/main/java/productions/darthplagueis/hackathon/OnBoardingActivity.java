@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 import productions.darthplagueis.hackathon.abstractclasses.AbstractOnBoardingActivity;
 import productions.darthplagueis.hackathon.controller.FragmentAdapter;
 import productions.darthplagueis.hackathon.fragments.DefaultOnBoardingFragment;
-import productions.darthplagueis.hackathon.fragments.HowOnBoardingFragment;
+import productions.darthplagueis.hackathon.fragments.ClickableOnBoardingFragment;
 
 public class OnBoardingActivity extends AbstractOnBoardingActivity {
 
@@ -44,9 +44,9 @@ public class OnBoardingActivity extends AbstractOnBoardingActivity {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         DefaultOnBoardingFragment whatFragment = new DefaultOnBoardingFragment();
         whatFragment.setLayoutId(R.layout.fragment_on_boarding_intro);
-        DefaultOnBoardingFragment whyFragment = new DefaultOnBoardingFragment();
+        ClickableOnBoardingFragment whyFragment = new ClickableOnBoardingFragment();
         whyFragment.setLayoutId(R.layout.fragment_on_boarding_why);
-        HowOnBoardingFragment howFragment = new HowOnBoardingFragment();
+        ClickableOnBoardingFragment howFragment = new ClickableOnBoardingFragment();
         howFragment.setLayoutId(R.layout.fragment_on_boarding_how);
         adapter.addOnBoardingFragments(whatFragment);
         adapter.addOnBoardingFragments(whyFragment);

@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/second_row"
             android:layout_marginTop="@dimen/activity_padding"
-            android:text="@string/tap_anywhere_to_continue"
+            android:text="@string/tap_anywhere_to_skip"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp"

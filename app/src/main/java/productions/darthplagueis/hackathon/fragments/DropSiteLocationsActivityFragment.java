@@ -8,11 +8,14 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import productions.darthplagueis.hackathon.MainActivity;
 import productions.darthplagueis.hackathon.R;
 import productions.darthplagueis.hackathon.abstractclasses.AbstractActivityFragment;
 import productions.darthplagueis.hackathon.controller.DropOffSiteAdapter;
 import productions.darthplagueis.hackathon.model.FoodScrapsResponse;
 import productions.darthplagueis.hackathon.network.RetrofitFactory;
+
+import static productions.darthplagueis.hackathon.util.NetworkConnectivity.isConnected;
 
 public class DropSiteLocationsActivityFragment extends AbstractActivityFragment {
 
@@ -27,7 +30,12 @@ public class DropSiteLocationsActivityFragment extends AbstractActivityFragment 
     @Override
     public void onCreateView() {
         setViews();
-        getDropOffSiteLocations();
+
+        if (isConnected(parentView.getContext())) {
+            getDropOffSiteLocations();
+        } else {
+            getParentActivity().showSnackbar(getString(R.string.no_network));
+        }
     }
 
     private void setViews() {
@@ -49,6 +57,7 @@ public class DropSiteLocationsActivityFragment extends AbstractActivityFragment 
                 progressBar.setVisibility(View.GONE);
                 getParentActivity().showSnackbar(String.valueOf(responseList.size()) + " " +
                         getString(R.string.results_returned));
+                ((MainActivity) getParentActivity()).passListToMapsFragment(responseList);
             }
 
             @Override
