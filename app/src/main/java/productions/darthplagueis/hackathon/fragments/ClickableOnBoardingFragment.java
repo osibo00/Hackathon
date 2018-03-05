@@ -6,7 +6,7 @@ import android.view.View;
 import productions.darthplagueis.hackathon.MainActivity;
 import productions.darthplagueis.hackathon.abstractclasses.AbstractOnBoardingFragment;
 
-public class HowOnBoardingFragment extends AbstractOnBoardingFragment {
+public class ClickableOnBoardingFragment extends AbstractOnBoardingFragment {
 
     @Override
     public void onCreateView() {

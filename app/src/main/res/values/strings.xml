@@ -18,7 +18,7 @@
     <string name="why_answer_cont">New York City has shown incredible leadership on food waste recycling to first prevent, then recover, and finally recycle any remaining food with implement government policy and laws along with dedicated and simple organic waste recycling practices.</string>
     <string name="hours_unavailable">Hours are unavailable</string>
     <string name="days_unavailable">Days are unavailable</string>
-    <string name="results_returned">Food scrap drop off sites returned.</string>
+    <string name="results_returned">Food scrap drop off sites returned</string>
     <string name="skip">Skip</string>
     <string name="tap_anywhere_to_continue">Tap anywhere to continue</string>
     <string name="food_scrap_drop_off_site_location_details">Drop Off Site Location Details</string>
@@ -26,12 +26,18 @@
     <string name="address_unavailable">Address is unavailable</string>
     <string name="postcode_unavailabe">Postcode is unavailable</string>
     <string name="citymap_unavail">CityMap is unavailable.</string>
-    <string name="citymap_click">Click to visit CityMap</string>
+    <string name="citymap_click">Tap to visit CityMap</string>
     <string name="website_unavail">Website is unavailable.</string>
-    <string name="website_click">Click to visit Website</string>
+    <string name="website_click">Tap to visit Website</string>
     <string name="materails_unavail">Materials accepted are unavailable</string>
     <string name="months_unavail">Months of operation are unavailable</string>
     <string name="reqs_unavail">Requirements are unavailable</string>
     <string name="board_unavail">Community board is unavailable</string>
     <string name="council_unavail">Community council is unavailable</string>
+    <string name="welcome_to_foodthings">Welcome to FoodThings</string>
+    <string name="our_mission">Our Mission</string>
+    <string name="about">About</string>
+    <string name="favorite_locations">Favorite Locations</string>
+    <string name="nearby_map">Nearby on Map</string>
+    <string name="tap_anywhere_to_skip">Tap anywhere to skip</string>
 </resources>

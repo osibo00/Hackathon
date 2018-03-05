@@ -6,4 +6,5 @@
     <dimen name="nav_header_height">222dp</dimen>
     <dimen name="activity_padding">16dp</dimen>
     <dimen name="activity_margin_top">8dp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
 </resources>

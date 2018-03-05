@@ -2,16 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:icon="@drawable/ic_launcher_foreground"
+            android:id="@+id/nav_intro"
+            android:icon="@drawable/ic_fullscreen_black_24dp"
             android:tint="@color/colorAccent"
-            android:title="One" />
+            android:title="@string/our_mission" />
         <item
-            android:icon="@drawable/ic_launcher_foreground"
+            android:icon="@drawable/ic_aspect_ratio_black_24dp"
             android:tint="@color/colorAccent"
-            android:title="Two" />
+            android:title="@string/favorite_locations" />
         <item
-            android:icon="@drawable/ic_launcher_foreground"
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
             android:tint="@color/colorAccent"
-            android:title="Three" />
+            android:title="@string/about" />
     </group>
 </menu>
