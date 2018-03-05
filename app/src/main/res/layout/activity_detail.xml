@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coord_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,13 +48,149 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_padding">
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/first_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/food_scrap_drop_off_site_location_details"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <View
+                android:id="@+id/second_row"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/first_row"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/detail_composted_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/second_row"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_composted_by"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_address"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_postcode"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_days"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_citymap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_hours"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/orange"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_website"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_citymap"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/orange"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_materials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_website"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_materials"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_requirements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_months"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_requirements"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/detail_council"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_board"
+                android:layout_marginTop="@dimen/activity_margin_top"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/app_name" />
+
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

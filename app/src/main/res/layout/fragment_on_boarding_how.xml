@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/green_nature03" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/green_food03" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,9 +49,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/first_row"
             android:text="@string/why_answer_cont"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/white"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/third_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/second_row"
+            android:layout_marginTop="@dimen/activity_padding"
+            android:text="@string/tap_anywhere_to_continue"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
